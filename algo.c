@@ -6,78 +6,75 @@
 /*   By: vsedat <vsedat@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 17:21:02 by vsedat            #+#    #+#             */
-/*   Updated: 2021/11/27 19:37:40 by vsedat           ###   ########lyon.fr   */
+/*   Updated: 2021/11/28 17:29:37 by vsedat           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
 
-int	sizeint(int a)
-{
-	int	size;
-
-	size = 1;
-	while (a > 9)
-	{
-		size++;
-		a /= 10;
-	}
-	return (size);
-}
-
-void	ft_putnbr_fd(int n, int fd)
-{
-	int long	nbl;
-
-	nbl = n;
-	if (nbl < 0)
-	{
-		write(fd, "-", 1);
-		nbl *= -1;
-	}
-	if (nbl > 9)
-	{
-		ft_putnbr_fd(nbl / 10, fd);
-		ft_putnbr_fd(nbl % 10, fd);
-	}
-	if (nbl <= 9)
-	{
-		nbl += '0';
-		write(fd, &nbl, 1);
-	}
-}
-
-void	printab(int *tab_a, int *tab_b, int size)
+int	ft_strlen(const char *s)
 {
 	int	i;
 
 	i = 0;
-	write(1, "--------------\n", 15);
+	while (s[i])
+		i++;
+	return (i);
+}
+
+void	printab(char **tab_a, char **tab_b, int size)
+{
+	int	i;
+	int	style;
+
+	i = 0;
+	printf("-----------------------------\n");
 	while (i < size)
 	{
-		ft_putnbr_fd(tab_a[i], 1);
-		write(1, "  |  ", 5);
-		ft_putnbr_fd(tab_b[i], 1);
-		write(1, "\n", 1);
+		if (tab_a[i])
+			printf("%s", tab_a[i]);
+		else
+			printf("V");
+		style = 0;
+		while (style + ft_strlen(tab_a[i]) <= 10)
+		{
+			printf(" ");
+			style++;
+		}
+		printf("|    ");
+		if (tab_b[i])
+			printf("%s", tab_b[i]);
+		else
+			printf("V");
+		printf("\n");
 		i++;
 	}
-	write(1, "\n", 1);
+	printf("           |\n  tab_a    |  tab_b\n");
+	printf("-----------------------------\n\n");
 }
 
 int	*maketab(int argc, char *argv[])
 {
-	int	*tab_a;
-	int	*tab_b;
-	int	size;
+	char	**tab_a;
+	char	**tab_b;
+	int		size;
 
+	tab_a = malloc(argc * sizeof(char *));
 	size = 0;
-	tab_a = malloc((argc - 1) * sizeof(int));
-	tab_b = malloc((argc - 1) * sizeof(int));
 	while (size < argc - 1)
 	{
-		tab_a[size] = atoi(argv[size + 1]);
+		tab_a[size] = malloc(ft_strlen(argv[size + 1]) * sizeof(char));
+		tab_a[size] = argv[size + 1];
 		size++;
 	}
+	tab_a[size] = 0;
+	tab_b = malloc(argc * sizeof(char *));
+	size = 0;
+	while (size < argc - 1)
+		tab_b[size++] = 0;
+	printab(tab_a, tab_b, size);
+	swap_a(&tab_a);
 	printab(tab_a, tab_b, size);
 	return (0);
 }
