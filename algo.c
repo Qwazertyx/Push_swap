@@ -6,7 +6,7 @@
 /*   By: vsedat <vsedat@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 17:21:02 by vsedat            #+#    #+#             */
-/*   Updated: 2021/11/28 17:29:37 by vsedat           ###   ########lyon.fr   */
+/*   Updated: 2021/11/29 00:32:16 by vsedat           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,27 @@ int	ft_strlen(const char *s)
 	return (i);
 }
 
+void	*ft_calloc(size_t count, size_t size)
+{
+	char	*tab;
+
+	tab = malloc(count * size);
+	if (!tab)
+		return (0);
+	ft_memset(tab, 0, count * size);
+	return ((void *)tab);
+}
+
+void	*ft_memset(void *b, int c, size_t len)
+{
+	unsigned char	*s;
+
+	s = b;
+	while (len--)
+		s[len] = (unsigned int)c;
+	return (b);
+}
+
 void	printab(char **tab_a, char **tab_b, int size)
 {
 	int	i;
@@ -32,25 +53,19 @@ void	printab(char **tab_a, char **tab_b, int size)
 	printf("-----------------------------\n");
 	while (i < size)
 	{
-		if (tab_a[i])
-			printf("%s", tab_a[i]);
-		else
-			printf("V");
+		printf("%s", tab_a[i]);
 		style = 0;
 		while (style + ft_strlen(tab_a[i]) <= 10)
 		{
 			printf(" ");
 			style++;
 		}
-		printf("|    ");
-		if (tab_b[i])
-			printf("%s", tab_b[i]);
-		else
-			printf("V");
+		printf("|  ");
+		printf("%s", tab_b[i]);
 		printf("\n");
 		i++;
 	}
-	printf("           |\n  tab_a    |  tab_b\n");
+	printf("           |\n  tab_a    |    tab_b\n");
 	printf("-----------------------------\n\n");
 }
 
@@ -64,7 +79,7 @@ int	*maketab(int argc, char *argv[])
 	size = 0;
 	while (size < argc - 1)
 	{
-		tab_a[size] = malloc(ft_strlen(argv[size + 1]) * sizeof(char));
+		tab_a[size] = malloc(10 * sizeof(char));
 		tab_a[size] = argv[size + 1];
 		size++;
 	}
@@ -72,9 +87,11 @@ int	*maketab(int argc, char *argv[])
 	tab_b = malloc(argc * sizeof(char *));
 	size = 0;
 	while (size < argc - 1)
-		tab_b[size++] = 0;
-	printab(tab_a, tab_b, size);
-	swap_a(&tab_a);
-	printab(tab_a, tab_b, size);
+	{
+		tab_b[size] = malloc(10 * sizeof(char));
+		tab_b[size] = 0;
+		size++;
+	}
+	tests_f(tab_a, tab_b, size);
 	return (0);
 }
