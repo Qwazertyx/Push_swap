@@ -6,7 +6,7 @@
 /*   By: vsedat <vsedat@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 15:18:17 by vsedat            #+#    #+#             */
-/*   Updated: 2021/12/20 15:03:05 by vsedat           ###   ########lyon.fr   */
+/*   Updated: 2021/12/20 18:15:15 by vsedat           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,12 @@ int	findnumber(int *tab_a, int number)
 void	firsttotop(int *tab_a, int argc)
 {
 	if (findnumber(tab_a, 1) > (argc / 2))
+	{
 		while (findnumber(tab_a, 1) != 0)
+		{
 			rotate_a(tab_a);
+		}
+	}
 	else
 		while (findnumber(tab_a, 1) != 0)
 			r_rotate_a(tab_a);
@@ -42,7 +46,7 @@ void	makehelptab(int *tab_a, int *helptab, int argc)
 	i = 1;
 	while (tab_a[i])
 	{
-		if (temp < tab_a[i])
+		if (temp < tab_a[i] && tab_a[i] < temp + (argc / 5))
 		{
 			temp = tab_a[i];
 			helptab[i] = 1;
@@ -75,6 +79,11 @@ void	returnbetter_b(int *tab_b, int *tab_a)
 }
 */
 
+int	whereshouldigo(int *tab_a, int *tab_b)
+{
+	
+}
+
 void	goodpush_b(int *tab_a, int *tab_b)
 {
 	if (!tab_b[0] || !tab_b[1])
@@ -103,6 +112,7 @@ void	rush_b(int *tab_a, int *tab_b, int *helptab)
 	}
 	if (!tab_b[1] || !tab_b[2])
 		push_b(tab_a, tab_b);
+	free(helptab);
 }
 
 void	returnbetter_b(int *tab_b, int *tab_a)
@@ -119,10 +129,17 @@ void	returnbetter_b(int *tab_b, int *tab_a)
 			if (tab_b[0] > tab_a[0])
 				r_rotate_a(tab_a);
 			else
+			{
 				rotate_a(tab_a);
+				// ca casse ici, je pense que cest si on est trop grand
+				// on rentre pas dans la condition beetween au dessus logique
+			}
 		}
 	}
 }
+
+//optimiser le nombre de moves ex: go from 56 with 60 the max to 
+//1 is only 5 moves down but here we choose 55 moves up :/
 
 void	ft_sort(int *tab_a, int *tab_b, int argc)
 {
@@ -134,7 +151,6 @@ void	ft_sort(int *tab_a, int *tab_b, int argc)
 	rush_b(tab_a, tab_b, helptab);
 	returnbetter_b(tab_b, tab_a);
 	firsttotop(tab_a, argc);
-	free(helptab);
 	free(tab_a);
 	free(tab_b);
 }
