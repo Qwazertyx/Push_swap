@@ -6,7 +6,7 @@
 /*   By: vsedat <vsedat@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 14:48:00 by vsedat            #+#    #+#             */
-/*   Updated: 2021/11/28 17:15:47 by vsedat           ###   ########lyon.fr   */
+/*   Updated: 2021/12/19 19:04:43 by vsedat           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,24 +22,6 @@ int	lennum(char *str)
 	if (str[0] == '-')
 		i--;
 	return (i);
-}
-
-char	*ft_strdup(const char *s1)
-{
-	char	*dup;
-	int		c;
-
-	c = 0;
-	dup = malloc((1 + ft_strlen(s1)) * sizeof(char));
-	if (!dup)
-		return (0);
-	while (s1[c])
-	{
-		dup[c] = s1[c];
-		c++;
-	}
-	dup[c] = '\0';
-	return (dup);
 }
 
 int	isnumber(char *str)

@@ -6,7 +6,7 @@
 /*   By: vsedat <vsedat@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 14:50:43 by vsedat            #+#    #+#             */
-/*   Updated: 2021/11/25 18:02:07 by vsedat           ###   ########lyon.fr   */
+/*   Updated: 2021/12/16 11:37:59 by vsedat           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	minmax(char *argv[])
 {
-	int			i;
+	int	i;
 
 	i = 1;
 	while (argv[i])

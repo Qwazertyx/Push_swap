@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algo.c                                             :+:      :+:    :+:   */
+/*   realalgo.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vsedat <vsedat@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 15:18:17 by vsedat            #+#    #+#             */
-/*   Updated: 2021/12/20 15:03:05 by vsedat           ###   ########lyon.fr   */
+/*   Updated: 2021/12/19 20:28:10 by vsedat           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,20 @@ int	findnumber(int *tab_a, int number)
 	return (i);
 }
 
+int	findnextsmol(int *tab_a, int ismol)
+{
+	int	i;
+
+	i = 0;
+	while (tab_a[i])
+	{
+		if (tab_a[i] == tab_a[ismol] + 1)
+			return (i);
+		i++;
+	}
+	return (-1);
+}
+
 void	firsttotop(int *tab_a, int argc)
 {
 	if (findnumber(tab_a, 1) > (argc / 2))
@@ -32,7 +46,7 @@ void	firsttotop(int *tab_a, int argc)
 			r_rotate_a(tab_a);
 }
 
-void	makehelptab(int *tab_a, int *helptab, int argc)
+void	makehelptab(int *tab_a, int *helptab)
 {
 	int	i;
 	int	temp;
@@ -53,40 +67,19 @@ void	makehelptab(int *tab_a, int *helptab, int argc)
 	}
 	helptab[i] = 0;
 }
-
 /*
-void	returnbetter_b(int *tab_b, int *tab_a)
+** makehelptab peut etre amelioree en cherchant le plus
+** de chars a la suite possible dans lordre croissant
+
+void	ft_sort(int *tab_a, int *tab_b, int argc)
 {
-	while (tab_b[0])
-	{
-		if (tab_b[0] > tab_a[0] && tab_b[0] < tab_a[1])
-		{
-			r_rotate_a(tab_a);
-			push_a(tab_a, tab_b);
-		}
-		else
-		{
-			if (tab_b[0] > tab_a[0])
-				r_rotate_a(tab_a);
-			else
-				rotate_a(tab_a);
-		}
-	}
+	int	*helptab;
+
+	firsttotop(tab_a, argc);
+	helptab = malloc(argc - 1 * sizeof(int));
+	makehelptab(tab_a, helptab);
 }
 */
-
-void	goodpush_b(int *tab_a, int *tab_b)
-{
-	if (!tab_b[0] || !tab_b[1])
-		push_b(tab_a, tab_b);
-	else
-	{
-		while (tab_a[0] < tab_b[0] && tab_a[0] > tab_b[1])
-			r_rotate_b(tab_b);
-		rotate_b(tab_b);
-		push_b(tab_a, tab_b);
-	}
-}
 
 void	rush_b(int *tab_a, int *tab_b, int *helptab)
 {
@@ -98,11 +91,56 @@ void	rush_b(int *tab_a, int *tab_b, int *helptab)
 		if (helptab[i] == 1)
 			r_rotate_a(tab_a);
 		else
-			goodpush_b(tab_a, tab_b);
+			push_b(tab_a, tab_b);
 		i++;
 	}
-	if (!tab_b[1] || !tab_b[2])
-		push_b(tab_a, tab_b);
+}
+
+int	bbig(int *tab_b)
+{
+	int	i;
+	int	big;
+
+	big = tab_b[0];
+	i = 1;
+	while (tab_b[i])
+	{
+		if (big < tab_b[0])
+			big = tab_b[0];
+		i++;
+	}
+	return (big);
+}
+
+void	bigtotop(int *tab_b, int argc)
+{
+	if (findnumber(tab_b, bbig(tab_b)) > (argc / 2))
+		while (findnumber(tab_b, bbig(tab_b)) != 0)
+			r_rotate_b(tab_b);
+	else
+		while (findnumber(tab_b, bbig(tab_b)) != 0)
+			rotate_b(tab_b);
+}
+
+void	paffichage(int *tab_a, int *tab_b)
+{
+	int	i;
+
+	i = 0;
+	printf("tab a:\n");
+	while (tab_a[i])
+	{
+		printf("%d\n", tab_a[i]);
+		i++;
+	}
+	i = 0;
+	printf("tab b:\n");
+	while (tab_b[i])
+	{
+		printf("%d\n", tab_b[i]);
+		i++;
+	}
+	printf("----\n");
 }
 
 void	returnbetter_b(int *tab_b, int *tab_a)
@@ -115,26 +153,20 @@ void	returnbetter_b(int *tab_b, int *tab_a)
 			push_a(tab_a, tab_b);
 		}
 		else
-		{
-			if (tab_b[0] > tab_a[0])
-				r_rotate_a(tab_a);
-			else
-				rotate_a(tab_a);
-		}
+			r_rotate_a(tab_a);
 	}
 }
 
 void	ft_sort(int *tab_a, int *tab_b, int argc)
 {
+	int	moves;
 	int	*helptab;
 
+	moves = 0;
 	firsttotop(tab_a, argc);
 	helptab = malloc(argc - 1 * sizeof(int));
-	makehelptab(tab_a, helptab, argc);
+	makehelptab(tab_a, helptab);
 	rush_b(tab_a, tab_b, helptab);
 	returnbetter_b(tab_b, tab_a);
 	firsttotop(tab_a, argc);
-	free(helptab);
-	free(tab_a);
-	free(tab_b);
 }

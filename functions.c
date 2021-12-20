@@ -6,64 +6,90 @@
 /*   By: vsedat <vsedat@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 15:19:25 by vsedat            #+#    #+#             */
-/*   Updated: 2021/11/29 00:13:49 by vsedat           ###   ########lyon.fr   */
+/*   Updated: 2021/12/16 12:02:21 by vsedat           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap_a(char **tab_a)
+void	swap_a(int *tab_a)
 {
-	char	*temp;
+	int	temp;
 
-	if (tab_a[0] && tab_a[1])
-	{
-		temp = tab_a[0];
-		tab_a[0] = tab_a[1];
-		tab_a[1] = temp;
-	}
+	temp = tab_a[0];
+	tab_a[0] = tab_a[1];
+	tab_a[1] = temp;
+	write(1, "sa\n", 3);
 }
 
-void	swap_b(char **tab_b)
+void	swap_b(int *tab_b)
 {
-	char	*temp;
+	int	temp;
 
-	if (tab_b[0] && tab_b[1])
-	{
-		temp = tab_b[0];
-		tab_b[0] = tab_b[1];
-		tab_b[1] = temp;
-	}
+	temp = tab_b[0];
+	tab_b[0] = tab_b[1];
+	tab_b[1] = temp;
+	write(1, "sb\n", 3);
 }
 
-void	ss(char **tab_a, char **tab_b)
+void	ss(int *tab_a, int *tab_b)
 {
-	swap_a(tab_a);
-	swap_b(tab_b);
+	int	temp;
+
+	temp = tab_a[0];
+	tab_a[0] = tab_a[1];
+	tab_a[1] = temp;
+	temp = tab_b[0];
+	tab_b[0] = tab_b[1];
+	tab_b[1] = temp;
+	write(1, "ss\n", 3);
 }
 
-void	push_up(char **tab)
+void	push_up(int *tab)
 {
-	int		i;
+	int	i;
 
 	i = 0;
-	while (tab[i + 1])
+	while (tab[i])
 	{
 		tab[i] = tab[i + 1];
 		i++;
 	}
+	tab[i] = 0;
 }
 
-void	push_down(char **tab)
+void	push_down(int *tab)
 {
-	int		i;
+	int	i;
 
 	i = 0;
-	while (tab[i + 1])
+	while (tab[i])
 		i++;
 	while (i > 0)
 	{
 		tab[i] = tab[i - 1];
+		i--;
+	}
+}
+/*
+int main(int argc, char *argv[])
+{
+	int	*tab_a;
+	int	i;
+
+	i = 0;
+	tab_a = maketab(argc, argv);
+	while (tab_a[i])
+	{
+		printf("%d\n", tab_a[i]);
+		i++;
+	}
+	i = 0;
+	push_down(tab_a);
+	while (tab_a[i])
+	{
+		printf("%d\n", tab_a[i]);
 		i++;
 	}
 }
+*/
