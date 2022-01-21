@@ -6,12 +6,12 @@
 /*   By: vsedat <vsedat@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 18:27:28 by vsedat            #+#    #+#             */
-/*   Updated: 2021/12/19 19:53:00 by vsedat           ###   ########lyon.fr   */
+/*   Updated: 2022/01/03 19:02:55 by vsedat           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-/*
+///*
 void	affichage(int *tab_a, int *tab_b)
 {
 	int	i;
@@ -32,7 +32,8 @@ void	affichage(int *tab_a, int *tab_b)
 	}
 	printf("----\n");
 }
-
+//*/
+/*
 void	test(int *tab_a, int *tab_b)
 {
 	affichage(tab_a, tab_b);
@@ -50,6 +51,7 @@ void	test(int *tab_a, int *tab_b)
 	affichage(tab_a, tab_b);
 }
 */
+
 int	main(int argc, char *argv[])
 {
 	int	*tab_a;
@@ -60,7 +62,8 @@ int	main(int argc, char *argv[])
 	tab_a = malloc(argc * sizeof(int));
 	tab_b = malloc(argc * sizeof(int));
 	maketab(argc, argv, tab_a, tab_b);
-	ft_sort(tab_a, tab_b, argc);
+	//firsttotop(tab_a, argc);
 	//affichage(tab_a, tab_b);
+	ft_sort(tab_a, tab_b, argc);
 	return (0);
 }

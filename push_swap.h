@@ -6,7 +6,7 @@
 /*   By: vsedat <vsedat@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 15:00:54 by vsedat            #+#    #+#             */
-/*   Updated: 2021/12/19 19:04:00 by vsedat           ###   ########lyon.fr   */
+/*   Updated: 2022/01/03 18:02:17 by vsedat           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,6 @@ int		tests_f(char **tab_a, char **tab_b, int size);
 void	ft_sort(int *tab_a, int *tab_b, int argc);
 void	actions(int *tab_a, int scan, int size);
 int		findnextsmol(int *tab_a, int smol);
+void	firsttotop(int *tab_a, int argc);
 
 #endif
