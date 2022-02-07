@@ -6,11 +6,11 @@
 /*   By: vsedat <vsedat@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 14:48:00 by vsedat            #+#    #+#             */
-/*   Updated: 2021/12/19 19:04:43 by vsedat           ###   ########lyon.fr   */
+/*   Updated: 2022/02/07 16:32:26 by vsedat           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../incl/push_swap.h"
 
 int	lennum(char *str)
 {

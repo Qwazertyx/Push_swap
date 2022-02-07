@@ -6,12 +6,11 @@
 /*   By: vsedat <vsedat@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 17:21:02 by vsedat            #+#    #+#             */
-/*   Updated: 2021/12/16 11:48:39 by vsedat           ###   ########lyon.fr   */
+/*   Updated: 2022/02/07 16:32:52 by vsedat           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include <stdio.h>
+#include "../incl/push_swap.h"
 
 int	ft_strlen(const char *s)
 {

@@ -6,11 +6,11 @@
 /*   By: vsedat <vsedat@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 15:18:17 by vsedat            #+#    #+#             */
-/*   Updated: 2022/01/20 17:26:26 by vsedat           ###   ########lyon.fr   */
+/*   Updated: 2022/02/07 17:44:06 by vsedat           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../incl/push_swap.h"
 
 int	findnumber(int *tab_a, int number)
 {
@@ -79,9 +79,30 @@ int	lentab(int *tab)
 	return (i);
 }
 
-void	zoneandpush(int *tab_a, int *tab_b, int nbtosort)
+void	()
+
+void	gphundred(int *tab_a, int *tab_b, int nbtosort)
 {
-	//while ()
+	int	i;
+
+	i = 0;
+	if (tab_a[0] > nbtosort * 3 / 4)
+	{
+		push_b(tab_a, tab_b);
+		r_rotate_b(tab_b);
+	}
+	else if (tab_a[0] > nbtosort / 2)
+	{
+		push_b(tab_a, tab_b);
+		r_rotate_b(tab_b);
+	}
+	else if (tab_a[0] > nbtosort / 4)
+	{
+		push_b(tab_a, tab_b);
+		r_rotate_b(tab_b);
+	}
+	else
+		push_b(tab_a, tab_b);
 }
 
 void	goodpush_b(int *tab_a, int *tab_b, int nbtosort)
@@ -96,7 +117,6 @@ void	goodpush_b(int *tab_a, int *tab_b, int nbtosort)
 		{
 			if (tab_a[0] > nbtosort / 2)
 			{
-				
 				push_b(tab_a, tab_b);
 				r_rotate_b(tab_b);
 			}
@@ -106,12 +126,7 @@ void	goodpush_b(int *tab_a, int *tab_b, int nbtosort)
 		if (nbtosort >= 30 && nbtosort < 200)
 		{
 			if (tab_a[0] > nbtosort / 2)
-			{
-				push_b(tab_a, tab_b);
-				r_rotate_b(tab_b);
-			}
-			else
-				push_b(tab_a, tab_b);
+				gphundred(tab_a, tab_b, nbtosort);
 		}
 		if (nbtosort < 30)
 			push_b(tab_a, tab_b);

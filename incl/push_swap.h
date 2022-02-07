@@ -6,7 +6,7 @@
 /*   By: vsedat <vsedat@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 15:00:54 by vsedat            #+#    #+#             */
-/*   Updated: 2022/01/03 18:02:17 by vsedat           ###   ########lyon.fr   */
+/*   Updated: 2022/02/07 16:32:56 by vsedat           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 # include	<stdlib.h>
 # include	<unistd.h>
+#include <stdio.h>
 
 int		minmax(char *argv[]);
 int		aremultiple(char *argv[]);

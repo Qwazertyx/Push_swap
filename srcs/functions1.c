@@ -6,11 +6,11 @@
 /*   By: vsedat <vsedat@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 16:20:35 by vsedat            #+#    #+#             */
-/*   Updated: 2021/12/19 18:44:31 by vsedat           ###   ########lyon.fr   */
+/*   Updated: 2022/02/07 16:32:33 by vsedat           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../incl/push_swap.h"
 
 void	push_a(int *tab_a, int *tab_b)
 {
