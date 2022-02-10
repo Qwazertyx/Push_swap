@@ -6,21 +6,11 @@
 /*   By: vsedat <vsedat@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 17:21:02 by vsedat            #+#    #+#             */
-/*   Updated: 2022/02/07 16:32:52 by vsedat           ###   ########lyon.fr   */
+/*   Updated: 2022/02/10 15:47:34 by vsedat           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/push_swap.h"
-
-int	ft_strlen(const char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
-}
 
 int	parsing(const char *str)
 {
@@ -74,27 +64,6 @@ int	ft_atoi(const char *str)
 	return (res * sign(str));
 }
 
-int	findsmol(char *argv[])
-{
-	int	i;
-	int	smol;
-	int	ismol;
-
-	smol = ft_atoi(argv[1]);
-	ismol = 1;
-	i = 2;
-	while (argv[i])
-	{
-		if (smol > ft_atoi(argv[i]))
-		{
-			smol = ft_atoi(argv[i]);
-			ismol = i;
-		}
-		i++;
-	}
-	return (ismol);
-}
-
 int	findbig(char *argv[])
 {
 	int	i;
@@ -119,7 +88,6 @@ int	findbig(char *argv[])
 void	maketab(int argc, char *argv[], int *tab_a, int *tab_b)
 {
 	int	i;
-	int	smol;
 
 	i = 1;
 	while (i < argc)

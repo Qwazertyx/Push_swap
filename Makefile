@@ -6,7 +6,7 @@
 #    By: vsedat <vsedat@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/25 15:08:55 by vsedat            #+#    #+#              #
-#    Updated: 2022/02/07 17:07:14 by vsedat           ###   ########lyon.fr    #
+#    Updated: 2022/02/10 15:52:08 by vsedat           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ NAME	= push_swap
 ### COMPILATION ###
 ##**************###
 CC		= gcc -Ofast
-CFLAGS	= -Wall -Wextra -Werror
+CFLAGS	= -Wall -Wextra -Werror #-g3 -fsanitize=address
 CMLX	= -framework OpenGL -framework AppKit -g -lmlx -Lmlx
 
 ##*******************##
@@ -64,14 +64,18 @@ OBJS = $(addprefix $(OBJ_PATH)/,$(SOURCES:.c=.o))
 ##****************##
 ### SOURCE FILES ###
 ##****************##
-SOURCES	=	push_swap.c	\
-			checkarg.c	\
-			utils.c		\
-			algo.c		\
-			functions.c	\
-			functions1.c\
-			functions2.c\
-			maketab.c	\
+SOURCES	=	push_swap.c		\
+			checkarg.c		\
+			utils.c			\
+			utils2.c		\
+			algo.c			\
+			functions.c		\
+			functions1.c	\
+			functions2.c	\
+			maketab.c		\
+			pushtoa.c		\
+			pushtob.c		\
+			pushpredict.c	\
 
 ##*********##
 ### RULES ###
@@ -80,7 +84,7 @@ SOURCES	=	push_swap.c	\
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(HEADER) Makefile
 			@mkdir -p objs
 			@echo "$(BLUE)$(UNDERLINE)Compiling:$(END)$(CYAN) $<"
-			@${CC} -c $< -o $@
+			@${CC} ${CFLAGS} -c $< -o $@
 #add ${CFLAGS} asap
 all:	${NAME}
 
@@ -92,11 +96,17 @@ clean:
 		@rm -f ${OBJS}
 		@echo "$(BLUE)Object files cleaned$(DEF_COLOR)"
 
-100:
-	python3 pyviz.py `ruby -e "puts (1..100).to_a.shuffle.join(' ')"`
+test100:
+	@~/Desktop/cursus/push_swapdossier/Push_swap/push_swap_tester/./complexity 100 100 700
 
+test500:
+	@~/Desktop/cursus/push_swapdossier/Push_swap/push_swap_tester/./complexity 500 20 5500
+
+100:
+	@python3 pyviz.py `ruby -e "puts (1..100).to_a.shuffle.join(' ')"`
+	
 500:
-	python3 pyviz.py `ruby -e "puts (1..500).to_a.shuffle.join(' ')"`
+	@python3 pyviz.py `ruby -e "puts (1..500).to_a.shuffle.join(' ')"`
 
 fclean:	clean
 		@rm -f ${NAME}
@@ -107,24 +117,24 @@ re:	fclean
 	@echo "$(VIOLET)Cleaned and rebuilt everything$(END)"
 
 sus:
-	@echo "$(IRED)⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣤⣤⣤⣤⣤⣶⣦⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀$(END)"
-	@echo "$(IRED)⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⡿⠛⠉⠙⠛⠛⠛⠛⠻⢿⣿⣷⣤⡀⠀⠀⠀⠀⠀$(END)"
-	@echo "$(IRED)⠀⠀⠀⠀⠀⠀⠀⠀⣼⣿⠋⠀⠀⠀⠀⠀⠀⠀⢀⣀⣀⠈⢻⣿⣿⡄⠀⠀⠀⠀$(END)"
-	@echo "$(IRED)⠀⠀⠀⠀⠀⠀⠀⣸⣿⡏⠀⠀⠀⣠⣶⣾⣿⣿⣿⠿⠿⠿⢿⣿⣿⣿⣄⠀⠀⠀$(END)"
-	@echo "$(IRED)⠀⠀⠀⠀⠀⠀⠀⣿⣿⠁⠀⠀⢰⣿⣿⣯⠁⠀⠀⠀⠀⠀⠀⠀⠈⠙⢿⣷⡄⠀$(END)"
-	@echo "$(IRED)⠀⠀⣀⣤⣴⣶⣶⣿⡟⠀⠀⠀⢸⣿⣿⣿⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣷⠀$(END)"
-	@echo "$(IRED)⠀⢰⣿⡟⠋⠉⣹⣿⡇⠀⠀⠀⠘⣿⣿⣿⣿⣷⣦⣤⣤⣤⣶⣶⣶⣶⣿⣿⣿⠀$(END)"
-	@echo "$(IRED)⠀⢸⣿⡇⠀⠀⣿⣿⡇⠀⠀⠀⠀⠹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠃⠀$(END)"
-	@echo "$(IRED)⠀⣸⣿⡇⠀⠀⣿⣿⡇⠀⠀⠀⠀⠀⠉⠻⠿⣿⣿⣿⣿⡿⠿⠿⠛⢻⣿⡇⠀⠀$(END)"
-	@echo "$(IRED)⠀⠸⣿⣧⡀⠀⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⠃⠀⠀$(END)"
-	@echo "$(IRED)⠀⠀⠛⢿⣿⣿⣿⣿⣇⠀⠀⠀⠀⠀⣰⣿⣿⣷⣶⣶⣶⣶⠶⠀⢠⣿⣿⠀⠀⠀$(END)"
-	@echo "$(IRED)⠀⠀⠀⠀⠀⠀⠀⣿⣿⠀⠀⠀⠀⠀⣿⣿⡇⠀⣽⣿⡏⠁⠀⠀⢸⣿⡇⠀⠀⠀$(END)"
-	@echo "$(IRED)⠀⠀⠀⠀⠀⠀⠀⣿⣿⠀⠀⠀⠀⠀⣿⣿⡇⠀⢹⣿⡆⠀⠀⠀⣸⣿⠇⠀⠀⠀$(END)"
-	@echo "$(IRED)⠀⠀⠀⠀⠀⠀⠀⢿⣿⣦⣄⣀⣠⣴⣿⣿⠁⠀⠈⠻⣿⣿⣿⣿⡿⠏⠀⠀⠀⠀$(END)"
-	@echo "$(IRED)⠀⠀⠀⠀⠀⠀⠀⠈⠛⠻⠿⠿⠿⠿⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀$(END)"
-	@echo "$(WHITE)⠀⠀⠀⠀⠀⠀⠀⠀⠀░█▀▀░█░█░█▀▀$(END)"
-	@echo "$(WHITE)⠀⠀⠀⠀⠀⠀⠀⠀⠀░▀▀█░█░█░▀▀█$(END)"
-	@echo "$(WHITE)⠀⠀⠀⠀⠀⠀⠀⠀⠀░▀▀▀░▀▀▀░▀▀▀$(END)"
+	@echo "$(IRED)           ⣠⣤⣤⣤⣤⣤⣶⣦⣤⣄⡀        $(END)"
+	@echo "$(IRED)        ⢀⣴⣿⡿⠛⠉⠙⠛⠛⠛⠛⠻⢿⣿⣷⣤⡀     $(END)"
+	@echo "$(IRED)        ⣼⣿⠋       ⢀⣀⣀⠈⢻⣿⣿⡄    $(END)"
+	@echo "$(IRED)       ⣸⣿⡏   ⣠⣶⣾⣿⣿⣿⠿⠿⠿⢿⣿⣿⣿⣄   $(END)"
+	@echo "$(IRED)       ⣿⣿⠁  ⢰⣿⣿⣯⠁       ⠈⠙⢿⣷⡄ $(END)"
+	@echo "$(IRED)  ⣀⣤⣴⣶⣶⣿⡟   ⢸⣿⣿⣿⣆          ⣿⣷ $(END)"
+	@echo "$(IRED) ⢰⣿⡟⠋⠉⣹⣿⡇   ⠘⣿⣿⣿⣿⣷⣦⣤⣤⣤⣶⣶⣶⣶⣿⣿⣿ $(END)"
+	@echo "$(IRED) ⢸⣿⡇  ⣿⣿⡇    ⠹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠃ $(END)"
+	@echo "$(IRED) ⣸⣿⡇  ⣿⣿⡇     ⠉⠻⠿⣿⣿⣿⣿⡿⠿⠿⠛⢻⣿⡇  $(END)"
+	@echo "$(IRED) ⠸⣿⣧⡀ ⣿⣿⡇                ⣿⣿⠃  $(END)"
+	@echo "$(IRED)  ⠛⢿⣿⣿⣿⣿⣇     ⣰⣿⣿⣷⣶⣶⣶⣶⠶ ⢠⣿⣿   $(END)"
+	@echo "$(IRED)       ⣿⣿     ⣿⣿⡇ ⣽⣿⡏⠁  ⢸⣿⡇   $(END)"
+	@echo "$(IRED)       ⣿⣿     ⣿⣿⡇ ⢹⣿⡆   ⣸⣿⠇   $(END)"
+	@echo "$(IRED)       ⢿⣿⣦⣄⣀⣠⣴⣿⣿⠁ ⠈⠻⣿⣿⣿⣿⡿⠏    $(END)"
+	@echo "$(IRED)       ⠈⠛⠻⠿⠿⠿⠿⠋⠁              $(END)"
+	@echo "$(WHITE)         ░█▀▀░█░█░█▀▀$(END)"
+	@echo "$(WHITE)         ░▀▀█░█░█░▀▀█$(END)"
+	@echo "$(WHITE)         ░▀▀▀░▀▀▀░▀▀▀$(END)"
 
-.PHONY:	all clean fclean re 100 500 sus
+.PHONY:	all clean fclean re 100 500 sus test100 test500
 

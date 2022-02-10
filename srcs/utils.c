@@ -6,7 +6,7 @@
 /*   By: vsedat <vsedat@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 14:48:00 by vsedat            #+#    #+#             */
-/*   Updated: 2022/02/07 16:32:26 by vsedat           ###   ########lyon.fr   */
+/*   Updated: 2022/02/09 12:32:13 by vsedat           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,24 @@ int	ft_strcmp(char *s1, char *s2)
 	while ((s1[i] || s2[i]) && (s1[i] == s2[i]))
 		i++;
 	return (s1[i] - s2[i]);
+}
+
+int	lentab(int *tab)
+{
+	int	i;
+
+	i = 0;
+	while (tab[i])
+		i++;
+	return (i);
+}
+
+int	findnumber(int *tab_a, int number)
+{
+	int	i;
+
+	i = 0;
+	while (tab_a[i] != number)
+		i++;
+	return (i);
 }
