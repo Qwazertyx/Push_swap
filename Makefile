@@ -6,7 +6,7 @@
 #    By: vsedat <vsedat@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/25 15:08:55 by vsedat            #+#    #+#              #
-#    Updated: 2022/02/11 11:29:15 by vsedat           ###   ########lyon.fr    #
+#    Updated: 2022/02/11 12:45:09 by vsedat           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -97,10 +97,10 @@ clean:
 		@echo "$(BLUE)$(REV)Object files cleaned$(DEF_COLOR)"
 
 test100:
-	@~/Desktop/cursus/push_swapdossier/Push_swap/push_swap_tester/./complexity 100 500 700
+	@./push_swap_tester/complexity 100 500 700
 
 test500:
-	@~/Desktop/cursus/push_swapdossier/Push_swap/push_swap_tester/./complexity 500 100 5500
+	@./push_swap_tester/complexity 500 100 5500
 
 100:
 	@python3 pyviz.py `ruby -e "puts (1..100).to_a.shuffle.join(' ')"`
