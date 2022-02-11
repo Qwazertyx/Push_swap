@@ -6,7 +6,7 @@
 #    By: vsedat <vsedat@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/25 15:08:55 by vsedat            #+#    #+#              #
-#    Updated: 2022/02/10 15:52:08 by vsedat           ###   ########lyon.fr    #
+#    Updated: 2022/02/11 11:29:15 by vsedat           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,24 +83,24 @@ SOURCES	=	push_swap.c		\
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(HEADER) Makefile
 			@mkdir -p objs
-			@echo "$(BLUE)$(UNDERLINE)Compiling:$(END)$(CYAN) $<"
+			@echo "$(BLUE)Compiling:$(END)$(CYAN) $<"
 			@${CC} ${CFLAGS} -c $< -o $@
 #add ${CFLAGS} asap
 all:	${NAME}
 
 ${NAME}:	${OBJS}
 			@${CC} ${CFLAGS} ${OBJS} -o ${NAME}
-			@echo "$(GREEN)Successful compilation"
+			@echo "$(GREEN)$(REV)Successful compilation"
 	
 clean:
 		@rm -f ${OBJS}
-		@echo "$(BLUE)Object files cleaned$(DEF_COLOR)"
+		@echo "$(BLUE)$(REV)Object files cleaned$(DEF_COLOR)"
 
 test100:
-	@~/Desktop/cursus/push_swapdossier/Push_swap/push_swap_tester/./complexity 100 100 700
+	@~/Desktop/cursus/push_swapdossier/Push_swap/push_swap_tester/./complexity 100 500 700
 
 test500:
-	@~/Desktop/cursus/push_swapdossier/Push_swap/push_swap_tester/./complexity 500 20 5500
+	@~/Desktop/cursus/push_swapdossier/Push_swap/push_swap_tester/./complexity 500 100 5500
 
 100:
 	@python3 pyviz.py `ruby -e "puts (1..100).to_a.shuffle.join(' ')"`
@@ -110,11 +110,11 @@ test500:
 
 fclean:	clean
 		@rm -f ${NAME}
-		@echo "$(CYAN)Executable files cleaned$(END)"
+		@echo "$(GREEN)$(REV)Executable files cleaned$(END)"
 
 re:	fclean
 	@${MAKE} all
-	@echo "$(VIOLET)Cleaned and rebuilt everything$(END)"
+	@echo "$(VIOLET)$(REV)Cleaned and rebuilt everything$(END)"
 
 sus:
 	@echo "$(IRED)           ⣠⣤⣤⣤⣤⣤⣶⣦⣤⣄⡀        $(END)"

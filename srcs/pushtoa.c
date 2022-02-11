@@ -6,7 +6,7 @@
 /*   By: vsedat <vsedat@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 12:38:27 by vsedat            #+#    #+#             */
-/*   Updated: 2022/02/10 14:44:55 by vsedat           ###   ########lyon.fr   */
+/*   Updated: 2022/02/11 11:30:56 by vsedat           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,25 +42,15 @@ void	movea(int *tab_b, int *tab_a)
 
 void	moveb(int *tab_b, int *tab_a)
 {
-	int	itomove;
+	int	i;
 
-	itomove = movespredict(tab_a, tab_b);
-	if (itomove >= lentab(tab_b) / 2)
-	{
-		while (itomove < lentab(tab_b))
-		{
+	i = movespredict(tab_a, tab_b);
+	if (i > lentab(tab_b) / 2)
+		while (i++ < lentab(tab_b))
 			rotate_b(tab_b);
-			itomove++;
-		}
-	}
 	else
-	{
-		while (itomove > 0)
-		{
+		while (i-- > 0)
 			r_rotate_b(tab_b);
-			itomove--;
-		}
-	}
 }
 
 void	returnbetter_b(int *tab_b, int *tab_a)
