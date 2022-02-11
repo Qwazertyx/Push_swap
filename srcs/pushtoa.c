@@ -6,7 +6,7 @@
 /*   By: vsedat <vsedat@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 12:38:27 by vsedat            #+#    #+#             */
-/*   Updated: 2022/02/11 12:34:49 by vsedat           ###   ########lyon.fr   */
+/*   Updated: 2022/02/11 12:48:15 by vsedat           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int	movea(int *tab_b, int *tab_a)
 {
 	int	i;
 
+	if (isbiggest(tab_b, tab_a))
+		firsttotop(tab_a, lentab(tab_a));
 	if (tab_b[0] < tab_a[0] && tab_b[0] > tab_a[lentab(tab_a)])
 		i = lentab(tab_a);
 	i = 1;
