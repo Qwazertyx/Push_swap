@@ -6,7 +6,7 @@
 /*   By: vsedat <vsedat@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 14:48:00 by vsedat            #+#    #+#             */
-/*   Updated: 2022/02/09 12:32:13 by vsedat           ###   ########lyon.fr   */
+/*   Updated: 2022/02/15 20:29:42 by vsedat           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	isnumber(char *str)
 		i++;
 	while (str[i])
 	{
-		if (str[i] < '0' || str[i] > '9')
+		if ((str[i] < '0' || str[i] > '9'))
 			return (0);
 		i++;
 	}

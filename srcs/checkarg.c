@@ -6,7 +6,7 @@
 /*   By: vsedat <vsedat@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 14:50:43 by vsedat            #+#    #+#             */
-/*   Updated: 2022/02/15 16:24:50 by vsedat           ###   ########lyon.fr   */
+/*   Updated: 2022/02/15 20:21:27 by vsedat           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,14 +67,19 @@ int	checkarg(int argc, char *argv[])
 	int	i;
 
 	argc = 0;
+	i = 0;
+	while (argv[++i])
+		if (argv[i][0] == '-' && argv[i][1] == '0')
+			argv[i] = "0";
 	i = 1;
 	while (argv[i])
 	{
 		if (!isnumber(argv[i]) || (argv[i][0] == '-' && !argv[i][1]))
 			return (0);
+		if (argv[i] == '\0')
+			return (0);
 		i++;
 	}
-	i = 1;
 	if (!aremultiple(argv))
 		return (0);
 	if (!toosmbig(argv))
