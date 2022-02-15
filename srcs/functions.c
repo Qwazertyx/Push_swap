@@ -6,7 +6,7 @@
 /*   By: vsedat <vsedat@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 15:19:25 by vsedat            #+#    #+#             */
-/*   Updated: 2022/02/09 12:32:27 by vsedat           ###   ########lyon.fr   */
+/*   Updated: 2022/02/15 16:29:40 by vsedat           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,25 +71,3 @@ void	push_down(int *tab)
 		i--;
 	}
 }
-/*
-int main(int argc, char *argv[])
-{
-	int	*tab_a;
-	int	i;
-
-	i = 0;
-	tab_a = maketab(argc, argv);
-	while (tab_a[i])
-	{
-		printf("%d\n", tab_a[i]);
-		i++;
-	}
-	i = 0;
-	push_down(tab_a);
-	while (tab_a[i])
-	{
-		printf("%d\n", tab_a[i]);
-		i++;
-	}
-}
-*/

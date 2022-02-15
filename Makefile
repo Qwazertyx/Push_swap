@@ -6,7 +6,7 @@
 #    By: vsedat <vsedat@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/25 15:08:55 by vsedat            #+#    #+#              #
-#    Updated: 2022/02/11 12:45:09 by vsedat           ###   ########lyon.fr    #
+#    Updated: 2022/02/15 15:11:41 by vsedat           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ NAME	= push_swap
 ### COMPILATION ###
 ##**************###
 CC		= gcc -Ofast
-CFLAGS	= -Wall -Wextra -Werror #-g3 -fsanitize=address
+CFLAGS	= -Wall -Wextra -Werror -g3 #-fsanitize=address
 CMLX	= -framework OpenGL -framework AppKit -g -lmlx -Lmlx
 
 ##*******************##
@@ -76,6 +76,7 @@ SOURCES	=	push_swap.c		\
 			pushtoa.c		\
 			pushtob.c		\
 			pushpredict.c	\
+			smallcase.c		\
 
 ##*********##
 ### RULES ###
@@ -85,7 +86,7 @@ $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(HEADER) Makefile
 			@mkdir -p objs
 			@echo "$(BLUE)Compiling:$(END)$(CYAN) $<"
 			@${CC} ${CFLAGS} -c $< -o $@
-#add ${CFLAGS} asap
+			
 all:	${NAME}
 
 ${NAME}:	${OBJS}
@@ -96,12 +97,31 @@ clean:
 		@rm -f ${OBJS}
 		@echo "$(BLUE)$(REV)Object files cleaned$(DEF_COLOR)"
 
+testall:	test2 test3 test5 test100 test500
+
+test2:
+	@echo "$(IRED)Testing for 2 random numbers:$(END)"
+	@./push_swap_tester/complexity 2 100 1 checker_Mac
+
+test3:
+	@echo "$(IRED)Testing for 3 random numbers:$(END)"
+	@./push_swap_tester/complexity 3 100 2 checker_Mac
+
+test5:
+	@echo "$(IRED)Testing for 5 random numbers:$(END)"
+	@./push_swap_tester/complexity 5 100 12 checker_Mac
+
 test100:
-	@./push_swap_tester/complexity 100 500 700
+	@echo "$(IRED)Testing for 100 random numbers:$(END)"
+	@./push_swap_tester/complexity 100 1000 900 checker_Mac
 
 test500:
-	@./push_swap_tester/complexity 500 100 5500
+	@echo "$(IRED)Testing for 500 random numbers:$(END)"
+	@./push_swap_tester/complexity 500 100 8500 checker_Mac
 
+5:
+	@python3 pyviz.py `ruby -e "puts (1..5).to_a.shuffle.join(' ')"`
+	
 100:
 	@python3 pyviz.py `ruby -e "puts (1..100).to_a.shuffle.join(' ')"`
 	
@@ -132,9 +152,6 @@ sus:
 	@echo "$(IRED)       ⣿⣿     ⣿⣿⡇ ⢹⣿⡆   ⣸⣿⠇   $(END)"
 	@echo "$(IRED)       ⢿⣿⣦⣄⣀⣠⣴⣿⣿⠁ ⠈⠻⣿⣿⣿⣿⡿⠏    $(END)"
 	@echo "$(IRED)       ⠈⠛⠻⠿⠿⠿⠿⠋⠁              $(END)"
-	@echo "$(WHITE)         ░█▀▀░█░█░█▀▀$(END)"
-	@echo "$(WHITE)         ░▀▀█░█░█░▀▀█$(END)"
-	@echo "$(WHITE)         ░▀▀▀░▀▀▀░▀▀▀$(END)"
 
 .PHONY:	all clean fclean re 100 500 sus test100 test500
 

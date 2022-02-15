@@ -6,7 +6,7 @@
 /*   By: vsedat <vsedat@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 15:00:54 by vsedat            #+#    #+#             */
-/*   Updated: 2022/02/10 11:10:28 by vsedat           ###   ########lyon.fr   */
+/*   Updated: 2022/02/15 15:58:02 by vsedat           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,15 @@ int		totopb(int *tab_b, int nb);
 int		lentab(int *tab);
 int		findnumber(int *tab_a, int number);
 void	returnbetter_b(int *tab_b, int *tab_a);
-int		ft_atoi(const char *str);
+long	ft_atoi(const char *str);
 void	rush_b(int *tab_a, int *tab_b, int *helptab, int nbtosort);
 void	makehelptab(int *tab_a, int *helptab, int argc);
 int		findsmol(char *argv[]);
 int		isbiggest(int *tab_b, int *tab_a);
+int		issorted(int *tab_a);
+void	pushtwo(int *tab_a);
+void	pushthree(int *tab_a);
+void	pushfive(int *tab_a, int *tab_b, int argc);
+int		movea(int *tab_b, int *tab_a);
 
 #endif

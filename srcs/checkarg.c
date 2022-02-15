@@ -6,7 +6,7 @@
 /*   By: vsedat <vsedat@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 14:50:43 by vsedat            #+#    #+#             */
-/*   Updated: 2022/02/09 12:32:28 by vsedat           ###   ########lyon.fr   */
+/*   Updated: 2022/02/15 16:24:50 by vsedat           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	minmax(char *argv[])
 	i = 1;
 	while (argv[i])
 	{
-		if (lennum(argv[i]) > 10)
+		if (lennum(argv[i]) > 13)
 			return (0);
 		i++;
 	}
@@ -46,20 +46,38 @@ int	aremultiple(char *argv[])
 	return (1);
 }
 
+int	toosmbig(char *argv[])
+{
+	int	i;
+
+	i = 1;
+	while (argv[i])
+	{
+		if (ft_atoi(argv[i]) > 2147483647)
+			return (0);
+		if (ft_atoi(argv[i]) < -2147483648)
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 int	checkarg(int argc, char *argv[])
 {
 	int	i;
 
-	if (argc < 2)
-		return (0);
+	argc = 0;
 	i = 1;
 	while (argv[i])
 	{
-		if (!isnumber(argv[i++]))
+		if (!isnumber(argv[i]) || (argv[i][0] == '-' && !argv[i][1]))
 			return (0);
+		i++;
 	}
 	i = 1;
 	if (!aremultiple(argv))
+		return (0);
+	if (!toosmbig(argv))
 		return (0);
 	return (minmax(argv));
 }

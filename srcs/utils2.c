@@ -6,7 +6,7 @@
 /*   By: vsedat <vsedat@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 12:26:41 by vsedat            #+#    #+#             */
-/*   Updated: 2022/02/09 12:32:11 by vsedat           ###   ########lyon.fr   */
+/*   Updated: 2022/02/11 14:35:54 by vsedat           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,21 @@ int	isbiggest(int *tab_b, int *tab_a)
 		if (tab_a[i] > tab_b[0])
 			return (0);
 		i++;
+	}
+	return (1);
+}
+
+int	issorted(int *tab_a)
+{
+	int	i;
+
+	i = 0;
+	while (tab_a[i])
+	{
+		if (tab_a[i] == i + 1)
+			i++;
+		else
+			return (0);
 	}
 	return (1);
 }
