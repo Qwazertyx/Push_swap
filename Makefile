@@ -6,7 +6,7 @@
 #    By: vsedat <vsedat@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/25 15:08:55 by vsedat            #+#    #+#              #
-#    Updated: 2022/02/15 15:11:41 by vsedat           ###   ########lyon.fr    #
+#    Updated: 2022/02/16 16:47:57 by vsedat           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -153,5 +153,5 @@ sus:
 	@echo "$(IRED)       ⢿⣿⣦⣄⣀⣠⣴⣿⣿⠁ ⠈⠻⣿⣿⣿⣿⡿⠏    $(END)"
 	@echo "$(IRED)       ⠈⠛⠻⠿⠿⠿⠿⠋⠁              $(END)"
 
-.PHONY:	all clean fclean re 100 500 sus test100 test500
+.PHONY:	all clean fclean re 5 100 500 sus test100 test500 test2 test3 test5 testall
 
