@@ -1,6 +1,5 @@
 <h1 align="center">Push_swap
- 
-[![vsedat's 42Project Score](https://badge42.herokuapp.com/api/project/vsedat/push_swap)](https://github.com/JaeSeoKim/badge42)
+ <a href="https://github.com/JaeSeoKim/badge42"><img src="https://badge42.vercel.app/api/v2/cl1kzq6n0001609iagycostl5/project/2499506" alt="vsedat's 42 push_swap Score" /></a>
   
 </h1> 
 <h3 align="center">Quick preview:</h3>
